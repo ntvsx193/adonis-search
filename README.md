@@ -2,7 +2,7 @@
 
 This is repo is a AdonisJs provider for simplicity work with search in adonis-lucid
 
-[![NPM Version][npm-image]][npm-url][![npm version](https://badge.fury.io/js/adonis-search.svg)](https://badge.fury.io/js/adonis-search)
+[![npm version](https://badge.fury.io/js/adonis-search.svg)](https://badge.fury.io/js/adonis-search)
 [![Build Status](https://travis-ci.org/ntvsx193/adonis-search.svg?branch=master)](https://travis-ci.org/ntvsx193/adonis-search)
 [![Coverage Status](https://coveralls.io/repos/github/ntvsx193/adonis-search/badge.svg?branch=master)](https://coveralls.io/github/ntvsx193/adonis-search?branch=master)
 
