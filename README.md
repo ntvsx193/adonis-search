@@ -77,8 +77,8 @@ cosnt query = new Query(request, {
 For basic usage you need add columns where you make search
 
 ```js
-const query = new Query(request)
-const users = await User.query({ order: 'id' })
+const query = new Query(request, { order: 'id' })
+const users = await User.query()
   .where(query.search([
     'first_name',
     'last_name',
@@ -89,8 +89,8 @@ const users = await User.query({ order: 'id' })
 If you need search in `INT` columns, you need set first argument as object with columns types:
 
 ```js
-const query = new Query(request)
-const users = await User.query({ order: 'id' })
+const query = new Query(request, { order: 'id' })
+const users = await User.query()
   .where(query.search({
     id: Query.INT,
     first_name: Query.STRING,
@@ -105,8 +105,8 @@ You can get parsed values from uri as `page` and `limit`. Variables are optional
 
 ```js
 Route.get('/users', async ({ request, response }) => {
-  const query = new Query(request)
-  const users = await User.query({ order: 'id' })
+  const query = new Query(request, { order: 'id' })
+  const users = await User.query()
     .paginate(query.page(), query.limit())
     
   response.json(users)
