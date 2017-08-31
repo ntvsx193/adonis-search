@@ -2,9 +2,9 @@
 
 This is repo is a AdonisJs provider for simplicity work with search in adonis-lucid
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Coveralls][coveralls-image]][coveralls-url]
+[![NPM Version][npm-image]][npm-url][![npm version](https://badge.fury.io/js/adonis-search.svg)](https://badge.fury.io/js/adonis-search)
+[![Build Status](https://travis-ci.org/ntvsx193/adonis-search.svg?branch=master)](https://travis-ci.org/ntvsx193/adonis-search)
+[![Coverage Status](https://coveralls.io/repos/github/ntvsx193/adonis-search/badge.svg?branch=master)](https://coveralls.io/github/ntvsx193/adonis-search?branch=master)
 
 ## Install
 
@@ -34,8 +34,10 @@ const Query = use('Query')
 const User = use('User')
 
 Route.get('/users', async ({ request, response }) => {
-  const query = new Query(request)
-  const users = await User.query({ order: 'id' })
+  const query = new Query(request, { order: 'id' })
+  const order = query.order()
+  
+  const users = await User.query()
     .where(query.search([
       'first_name',
       'last_name',
@@ -116,7 +118,11 @@ Route.get('/users', async ({ request, response }) => {
 For use order by you need set default value `order` by column for query
 
 ```js
-const users = await User.query({ order: 'id' })
+const query = new Query(request, { order: 'id' })
+const order = query.order()
+const users = await User.query()
+  .orderBy(order.column, order.direction)
+  .fetch()
 ```
 
 Reverse sort are supported by set first symbol `-` before name column. Sample uri as `/users?order=-email`
