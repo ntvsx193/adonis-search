@@ -54,9 +54,9 @@ Route.get('/users', async ({ request, response }) => {
 
 ```json
 {
-  page: 1,
-  limit: 30,
-  search: ''
+  "page": 1,
+  "limit": 30,
+  "search": ""
 }
 ```
 
