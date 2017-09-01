@@ -2,6 +2,7 @@
 
 const _ = require('lodash')
 const GE = require('@adonisjs/generic-exceptions')
+const Database = use('Database')
 
 class Query {
   static get INT () { return 1 }
@@ -78,14 +79,25 @@ class Query {
         return
       }
 
-      columns.forEach((column, i) => {
+      const whereLike = (column) => {
+        builder.orWhere(Database.raw(`LOWER(${column})`), 'LIKE', Database.raw(`LOWER('%${this._query.search}%')`))
+      }
+
+      const whereEqual = (column) => {
+        builder.orWhere(column, '=', this._query.search)
+      }
+
+      _.forEach(columns, (column, i) => {
         if (Number.isInteger(i)) {
-          builder.orWhere(column, 'LIKE', `%${this._query.search}%`)
+          whereLike(column)
         } else {
           if (column === this.constructor.INT) {
-            builder.orWhere(column, '=', this._query.search)
+            const valueInt = Number.parseInt(this._query.search)
+            if (Number.isInteger(valueInt)) {
+              whereEqual(i)
+            }
           } else {
-            builder.orWhere(column, 'LIKE', `%${this._query.search}%`)
+            whereLike(i)
           }
         }
       })

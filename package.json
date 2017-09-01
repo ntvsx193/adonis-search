@@ -1,6 +1,6 @@
 {
   "name": "adonis-search",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Mail provider for adonis framework and has support for all common mailing services to send emails",
   "main": "index.js",
   "directories": {
@@ -24,7 +24,6 @@
   "license": "MIT",
   "devDependencies": {
     "@adonisjs/fold": "^4.0.2",
-    "@adonisjs/lucid": "^4.0.16",
     "@adonisjs/sink": "^1.0.13",
     "coveralls": "^2.13.1",
     "cz-conventional-changelog": "^2.0.0",
@@ -51,6 +50,7 @@
   },
   "dependencies": {
     "@adonisjs/generic-exceptions": "^1.0.0",
+    "@adonisjs/lucid": "^4.0.16",
     "debug": "^3.0.0",
     "lodash": "^4.17.4"
   },

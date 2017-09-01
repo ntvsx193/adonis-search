@@ -31,7 +31,7 @@ Request url is `GET` `/users?search=mark&page=2&order=-email`
 ```js
 const Route = use('Route')
 const Query = use('Query')
-const User = use('User')
+const User = use('App/Models/User')
 
 Route.get('/users', async ({ request, response }) => {
   const query = new Query(request, { order: 'id' })
@@ -72,7 +72,9 @@ cosnt query = new Query(request, {
 
 ### Search
 
-> Search not fire where clause if search variable is empty.
+> Note 1. Search not fire where clause if search variable is empty.
+
+> Note 2. All search columns and values will be translated to lowercase.
 
 For basic usage you need add columns where you make search
 
@@ -105,7 +107,7 @@ You can get parsed values from uri as `page` and `limit`. Variables are optional
 
 ```js
 Route.get('/users', async ({ request, response }) => {
-  const query = new Query(request, { order: 'id' })
+  const query = new Query(request)
   const users = await User.query()
     .paginate(query.page(), query.limit())
     
