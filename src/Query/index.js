@@ -7,6 +7,7 @@ const Database = use('Database')
 class Query {
   static get INT () { return 1 }
   static get STRING () { return 2 }
+  static get INT_MAX_VALUE () { return 2147483647 }
 
   /**
    * @param {Object} request
@@ -80,7 +81,8 @@ class Query {
       }
 
       const whereLike = (column) => {
-        builder.orWhere(Database.raw(`LOWER(${column})`), 'LIKE', Database.raw(`LOWER('%${this._query.search}%')`))
+        const search = this._query.search.toLowerCase()
+        builder.orWhere(Database.raw(`LOWER(${column})`), 'LIKE', `%${search}%`)
       }
 
       const whereEqual = (column) => {
@@ -93,7 +95,7 @@ class Query {
         } else {
           if (column === this.constructor.INT) {
             const valueInt = Number.parseInt(this._query.search)
-            if (Number.isInteger(valueInt)) {
+            if (Number.isInteger(valueInt) && valueInt <= this.constructor.INT_MAX_VALUE) {
               whereEqual(i)
             }
           } else {
