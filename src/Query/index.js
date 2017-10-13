@@ -85,8 +85,8 @@ class Query {
         builder.orWhere(Database.raw(`LOWER(${column})`), 'LIKE', `%${search}%`)
       }
 
-      const whereEqual = (column) => {
-        builder.orWhere(column, '=', this._query.search)
+      const whereLikeInteger = (column) => {
+        builder.orWhere(Database.raw(`${column}::text`), 'LIKE', `%${this._query.search}%`)
       }
 
       _.forEach(columns, (column, i) => {
@@ -96,7 +96,7 @@ class Query {
           if (column === this.constructor.INT) {
             const valueInt = Number.parseInt(this._query.search)
             if (Number.isInteger(valueInt) && valueInt <= this.constructor.INT_MAX_VALUE) {
-              whereEqual(i)
+              whereLikeInteger(i)
             }
           } else {
             whereLike(i)
