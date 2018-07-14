@@ -1,6 +1,8 @@
-# Adonis Search
+# Adonis Lucid Search
 
 This is repo is a AdonisJs provider for simplicity work with search in adonis-lucid
+
+> Work with AdonisJs 4
 
 [![npm version](https://badge.fury.io/js/adonis-search.svg)](https://badge.fury.io/js/adonis-search)
 [![Build Status](https://travis-ci.org/ntvsx193/adonis-search.svg?branch=master)](https://travis-ci.org/ntvsx193/adonis-search)
@@ -22,7 +24,7 @@ const providers = [
 ]
 ```
 
-That's all! Now you can use the mail provider as follows.
+That's all! Now you can use the query provider as follows.
 
 ## Sample
 
