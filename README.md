@@ -20,7 +20,7 @@ The provider is registered inside `start/app.js` file under `providers` array.
 
 ```js
 const providers = [
-  'adonis-query/providers/QueryProvider'
+  'adonis-search/providers/QueryProvider'
 ]
 ```
 
