@@ -1,6 +1,6 @@
 # Adonis Lucid Search
 
-This is repo is a AdonisJs provider for simplicity work with search in adonis-lucid
+This repo is a AdonisJs provider for simplicity work with search in adonis-lucid
 
 > Work with AdonisJs 4
 
