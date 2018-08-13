@@ -67,7 +67,7 @@ Route.get('/users', async ({ request, response }) => {
 You can change defaults by send second argument in Query constructor
 
 ```js
-cosnt query = new Query(request, {
+const query = new Query(request, {
   limit: 50
 })
 ```
