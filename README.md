@@ -1,6 +1,6 @@
 # Adonis Lucid Search
 
-This is repo is a AdonisJs provider for simplicity work with search in adonis-lucid
+This repo is a AdonisJs provider for simplicity work with search in adonis-lucid
 
 > Work with AdonisJs 4
 
@@ -67,7 +67,7 @@ Route.get('/users', async ({ request, response }) => {
 You can change defaults by send second argument in Query constructor
 
 ```js
-cosnt query = new Query(request, {
+const query = new Query(request, {
   limit: 50
 })
 ```
